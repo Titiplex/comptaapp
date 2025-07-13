@@ -1,21 +1,26 @@
 package com.titiplex.comptaapp.controllers;
-import com.titiplex.comptaapp.*;
+
+import com.titiplex.comptaapp.DataStore;
 import com.titiplex.comptaapp.dao.AccountDao;
 import com.titiplex.comptaapp.models.Account;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.util.Optional;
 
 public class AccountsController {
-    @FXML private TableView<Account> accountsTable;
-    @FXML private TableColumn<Account,String> nameCol;
-    @FXML private TableColumn<Account,Number> balanceCol;
-    @FXML private Button addAccountBtn, delAccountBtn;
+    @FXML
+    private TableView<Account> accountsTable;
+    @FXML
+    private TableColumn<Account, String> nameCol;
+    @FXML
+    private TableColumn<Account, Number> balanceCol;
+    @FXML
+    private Button addAccountBtn, delAccountBtn;
 
-    @FXML private void initialize() {
+    @FXML
+    private void initialize() {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         balanceCol.setCellValueFactory(new PropertyValueFactory<>("balance"));
         accountsTable.setItems(DataStore.accounts);
@@ -31,17 +36,9 @@ public class AccountsController {
     }
 
     private void del() {
-        Account a = accountsTable.getSelectionModel().getSelectedItem();
-        if (a == null) return;
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Supprimer " + a.getName() + " ?", ButtonType.YES, ButtonType.NO);
-        confirm.showAndWait().filter(b -> b == ButtonType.YES).ifPresent(b -> {
-            try (Connection c = DBHelper.getConnection();
-                 PreparedStatement ps = c.prepareStatement("DELETE FROM account WHERE id=?")) {
-                ps.setInt(1, a.getId());
-                ps.executeUpdate();
-                DataStore.accounts.remove(a);
-                DataStore.recomputeBalances();
-            } catch (Exception ex) { ex.printStackTrace(); }
-        });
+        Account sel = accountsTable.getSelectionModel().getSelectedItem();
+        if (sel == null) return;
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Supprimer " + sel.getName() + " ?", ButtonType.YES, ButtonType.NO);
+        a.showAndWait().filter(b -> b == ButtonType.YES).ifPresent(b -> AccountDao.deleteAsync(sel.getId(), sel));
     }
 }

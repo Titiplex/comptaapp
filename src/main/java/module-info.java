@@ -14,4 +14,5 @@ module com.titiplex.comptaapp {
     opens com.titiplex.comptaapp.models to javafx.base;
     exports com.titiplex.comptaapp;
     exports com.titiplex.comptaapp.controllers;
+    exports com.titiplex.comptaapp.models;
 }

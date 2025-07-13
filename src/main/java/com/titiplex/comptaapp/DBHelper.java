@@ -1,33 +1,55 @@
 package com.titiplex.comptaapp;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public final class DBHelper {
-    private static final String URL = "jdbc:h2:file:./compta;AUTO_SERVER=TRUE";
+    private static final String URL = "jdbc:h2:file:./compta;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1";
+    private static final Connection CONN;
 
     static {
-        try (Connection c = DriverManager.getConnection(URL, "sa", "");
-             Statement st = c.createStatement()) {
+        try {
+            CONN = DriverManager.getConnection(URL, "sa", "");
+            try (Statement st = CONN.createStatement()) {
+                st.executeUpdate("CREATE TABLE IF NOT EXISTS account(id IDENTITY PRIMARY KEY,name VARCHAR UNIQUE NOT NULL,balance DOUBLE DEFAULT 0)");
+                st.executeUpdate("CREATE TABLE IF NOT EXISTS transaction(id IDENTITY PRIMARY KEY,date DATE NOT NULL,description VARCHAR,amount DOUBLE NOT NULL,account_id BIGINT NOT NULL,FOREIGN KEY(account_id) REFERENCES account(id))");
+            }
+            CONN.setAutoCommit(false);
+        } catch (SQLException e) {
+            throw new ExceptionInInitializerError(e);
+        }
+    }
 
-            st.executeUpdate("CREATE TABLE IF NOT EXISTS account(" +
-                    "id IDENTITY PRIMARY KEY," +
-                    "name VARCHAR(255) UNIQUE NOT NULL," +
-                    "balance DOUBLE DEFAULT 0 NOT NULL)");
+    public static final ExecutorService EXEC = Executors.newSingleThreadExecutor(r -> {
+        Thread t = new Thread(r, "db-thread");
+        t.setDaemon(true);
+        return t;
+    });
 
-            st.executeUpdate("CREATE TABLE IF NOT EXISTS transaction(" +
-                    "id IDENTITY PRIMARY KEY," +
-                    "date DATE NOT NULL," +
-                    "description VARCHAR(255)," +
-                    "amount DOUBLE NOT NULL," +
-                    "account_id BIGINT NOT NULL," +
-                    "FOREIGN KEY(account_id) REFERENCES account(id))");
+    private DBHelper() {
+    }
 
+    public static Connection getConn() {
+        return CONN;
+    }
+
+    public static void commit() {
+        try {
+            CONN.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, "sa", "");
+    public static void shutdown() {
+        EXEC.shutdown();
+        try {
+            CONN.close();
+        } catch (SQLException ignore) {
+        }
     }
 }

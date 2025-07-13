@@ -1,40 +1,61 @@
 package com.titiplex.comptaapp.dao;
-import com.titiplex.comptaapp.*;
+
+import com.titiplex.comptaapp.DBHelper;
+import com.titiplex.comptaapp.DataStore;
 import com.titiplex.comptaapp.models.Account;
-import java.sql.*;
+import javafx.application.Platform;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public final class AccountDao {
+
     public static void loadAllToStore() {
-        DataStore.accounts.clear();
-        try (Connection c = DBHelper.getConnection();
-             Statement st = c.createStatement();
-             ResultSet rs = st.executeQuery("SELECT id,name,balance FROM account")) {
-            while (rs.next())
-                DataStore.accounts.add(new Account(rs.getInt(1), rs.getString(2), rs.getDouble(3)));
-        } catch (SQLException e) { throw new RuntimeException(e); }
-    }
-
-    public static Account create(String name) {
-        try (Connection c = DBHelper.getConnection();
-             PreparedStatement ps = c.prepareStatement(
-                     "INSERT INTO account(name,balance) VALUES(?,0)", Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, name);
-            ps.executeUpdate();
-            try (ResultSet k = ps.getGeneratedKeys()) {
-                if (k.next()) {
-                    Account a = new Account(k.getInt(1), name, 0);
-                    DataStore.accounts.add(a);
-                    return a;
+        DBHelper.EXEC.execute(() -> {
+            DataStore.accounts.clear();
+            try (Statement st = DBHelper.getConn().createStatement();
+                 ResultSet rs = st.executeQuery("SELECT id,name,balance FROM account")) {
+                while (rs.next()) {
+                    Account a = new Account(rs.getInt(1), rs.getString(2), rs.getDouble(3));
+                    Platform.runLater(() -> DataStore.accounts.add(a));
                 }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
             }
-        } catch (SQLException e) { throw new RuntimeException(e); }
-        return null;
+        });
     }
 
-    public static void updateBalance(int id, double bal) {
-        try (Connection c = DBHelper.getConnection();
-             PreparedStatement ps = c.prepareStatement("UPDATE account SET balance=? WHERE id=?")) {
-            ps.setDouble(1, bal); ps.setInt(2, id); ps.executeUpdate();
-        } catch (SQLException e) { throw new RuntimeException(e); }
+    public static void create(String name) {
+        DBHelper.EXEC.execute(() -> {
+            try (PreparedStatement ps = DBHelper.getConn().prepareStatement(
+                    "INSERT INTO account(name,balance) VALUES(?,0)", Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, name);
+                ps.executeUpdate();
+                try (ResultSet k = ps.getGeneratedKeys()) {
+                    if (k.next()) {
+                        Account a = new Account(k.getInt(1), name, 0);
+                        Platform.runLater(() -> DataStore.accounts.add(a));
+                    }
+                }
+                DBHelper.commit();
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        });
+    }
+
+    public static void deleteAsync(int id, Account a) {
+        DBHelper.EXEC.execute(() -> {
+            try (PreparedStatement ps = DBHelper.getConn().prepareStatement("DELETE FROM account WHERE id=?")) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                DBHelper.commit();
+                Platform.runLater(() -> DataStore.accounts.remove(a));
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        });
     }
 }
