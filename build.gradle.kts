@@ -53,6 +53,8 @@ dependencies {
         exclude(group = "org.openjfx")
         exclude(group = "org.jetbrains.kotlin")
     }
+    // implementation("org.xerial:sqlite-jdbc:3.50.2.0")
+    implementation("com.h2database:h2:2.3.232")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

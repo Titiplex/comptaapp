@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<BorderPane fx:id="rootLayout"
-        fx:controller="com.titiplex.comptaapp.NavigationController"
-        xmlns:fx="http://javafx.com/fxml">
-
-    <left>
-        <VBox spacing="10.0" style="-fx-padding:15">
+<?import javafx.scene.control.Button?>
+<BorderPane fx:id="rootLayout" fx:controller="com.titiplex.comptaapp.NavigationController"
+            xmlns:fx="http://javafx.com/fxml">
+   <left>
+        <VBox spacing="10" style="-fx-padding:15">
             <Button text="Dashboard" onAction="#showDashboard" maxWidth="Infinity"/>
-            <Button text="Accounts" onAction="#showAccounts" maxWidth="Infinity"/>
-            <Button text="Transactions" onAction="#showTransactions" maxWidth="Infinity"/>
-            <Button text="Reports" onAction="#showReports" maxWidth="Infinity"/>
+            <Button text="Comptes" onAction="#showAccounts" maxWidth="Infinity"/>
+            <Button text="Écritures" onAction="#showTransactions" maxWidth="Infinity"/>
+            <Button text="Rapports" onAction="#showReports" maxWidth="Infinity"/>
         </VBox>
-    </left>
+   </left>
 </BorderPane>

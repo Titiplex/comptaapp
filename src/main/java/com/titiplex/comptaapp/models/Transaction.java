@@ -1,53 +1,24 @@
 package com.titiplex.comptaapp.models;
-
 import javafx.beans.property.*;
-
 import java.time.LocalDate;
 
 public class Transaction {
+    private final IntegerProperty id = new SimpleIntegerProperty();
     private final ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
     private final StringProperty description = new SimpleStringProperty();
     private final DoubleProperty amount = new SimpleDoubleProperty();
+    private final IntegerProperty accountId = new SimpleIntegerProperty();
 
-    public Transaction(LocalDate date, String desc, double amount) {
-        this.date.set(date);
-        this.description.set(desc);
-        this.amount.set(amount);
+    public Transaction(int id, LocalDate d, String desc, double amt, int acc) {
+        this.id.set(id); this.date.set(d); this.description.set(desc); this.amount.set(amt); this.accountId.set(acc);
     }
 
-    public LocalDate getDate() {
-        return date.get();
-    }
+    public LocalDate getDate() { return date.get(); }
+    public String getDescription() { return description.get(); }
+    public double getAmount() { return amount.get(); }
+    public int getAccountId() { return accountId.get(); }
 
-    public void setDate(LocalDate d) {
-        date.set(d);
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String d) {
-        description.set(d);
-    }
-
-    public double getAmount() {
-        return amount.get();
-    }
-
-    public void setAmount(double a) {
-        amount.set(a);
-    }
-
-    public ObjectProperty<LocalDate> dateProperty() {
-        return date;
-    }
-
-    public StringProperty descriptionProperty() {
-        return description;
-    }
-
-    public DoubleProperty amountProperty() {
-        return amount;
-    }
+    public ObjectProperty<LocalDate> dateProperty() { return date; }
+    public StringProperty descriptionProperty() { return description; }
+    public DoubleProperty amountProperty() { return amount; }
 }

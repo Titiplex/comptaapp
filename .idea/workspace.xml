@@ -4,11 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="" />
+    <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="Replace &quot;Hello&quot; view with a complete multi-view JavaFX application, including navigation, dashboard, accounts, transactions, and reports views. Add models, controllers, and styling updates.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DBHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/AccountDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/TransactionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DataStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/WebApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/WebApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/AccountsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/ReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/ReportsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/TransactionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/accounts-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/accounts-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/dashboard-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/reports-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/reports-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/transactions-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/transactions-view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ComptaApp" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ComptaApp" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ComptaApp" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,10 +87,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.ComptaApp [run].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\Titiplex\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.1\\plugins\\Shell Script\\shellcheck.exe",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "SDK Location",
     "project.structure.proportion": "0.17",
@@ -34,6 +103,35 @@
     "settings.editor.selected.configurable": "preferences.general"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="ComptaApp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--scan" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ComptaApp [run]" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -54,8 +152,56 @@
       <updated>1749545110323</updated>
       <workItem from="1749545122285" duration="279000" />
       <workItem from="1749545423623" duration="1225000" />
-      <workItem from="1752337754539" duration="7000" />
+      <workItem from="1752337754539" duration="6391000" />
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1752338822590</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1752338822590</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Replace &quot;Hello&quot; view with a complete multi-view JavaFX application, including navigation, dashboard, accounts, transactions, and reports views. Add models, controllers, and styling updates.">
+      <option name="closed" value="true" />
+      <created>1752399394768</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1752399394768</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="Replace &quot;Hello&quot; view with a complete multi-view JavaFX application, including navigation, dashboard, accounts, transactions, and reports views. Add models, controllers, and styling updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Replace &quot;Hello&quot; view with a complete multi-view JavaFX application, including navigation, dashboard, accounts, transactions, and reports views. Add models, controllers, and styling updates." />
   </component>
 </project>
