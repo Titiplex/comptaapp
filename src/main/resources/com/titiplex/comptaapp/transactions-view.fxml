@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.titiplex.comptaapp.controllers.TransactionsController"
+      style="-fx-padding:20">
+
+    <TableView fx:id="transactionsTable" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="dateCol" text="Date"/>
+            <TableColumn fx:id="descCol" text="Description"/>
+            <TableColumn fx:id="amtCol" text="Montant (€)"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <DatePicker fx:id="dateField"/>
+        <TextField promptText="Description" fx:id="descField" HBox.hgrow="ALWAYS"/>
+        <TextField promptText="Montant" fx:id="amountField"/>
+        <Button fx:id="addBtn" text="Ajouter"/>
+    </HBox>
+</VBox>

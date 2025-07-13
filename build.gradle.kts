@@ -40,6 +40,7 @@ dependencies {
     implementation("com.dlsc.formsfx:formsfx-core:11.6.0") {
       exclude(group = "org.openjfx")
     }
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.24")
     implementation("net.synedra:validatorfx:0.5.0") {
       exclude(group = "org.openjfx")
     }

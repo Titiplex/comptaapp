@@ -12,5 +12,8 @@ module com.titiplex.comptaapp {
     requires com.almasb.fxgl.all;
 
     opens com.titiplex.comptaapp to javafx.fxml;
+    opens com.titiplex.comptaapp.controllers to javafx.fxml;
     exports com.titiplex.comptaapp;
+    exports com.titiplex.comptaapp.controllers;
+    exports com.titiplex.comptaapp.models;
 }

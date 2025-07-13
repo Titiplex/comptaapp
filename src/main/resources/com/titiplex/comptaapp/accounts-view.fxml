@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.titiplex.comptaapp.controllers.AccountsController"
+            style="-fx-padding:20">
+    <center>
+        <TableView fx:id="accountsTable" prefHeight="400" prefWidth="600">
+            <columns>
+                <TableColumn fx:id="nameCol" text="Compte"/>
+                <TableColumn fx:id="balanceCol" text="Solde (€)"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <Button fx:id="addAccountBtn" text="Ajouter un compte" BorderPane.alignment="CENTER_RIGHT"/>
+    </bottom>
+</BorderPane>
