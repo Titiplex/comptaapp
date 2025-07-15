@@ -10,6 +10,7 @@
             <TableColumn fx:id="dateCol" text="Date"/>
             <TableColumn fx:id="descCol" text="Description"/>
             <TableColumn fx:id="amtCol" text="Montant (€)"/>
+            <TableColumn fx:id="eventCol" text="Evènement"/>
         </columns>
     </TableView>
     <HBox spacing="10">
@@ -17,6 +18,7 @@
         <TextField fx:id="descField" promptText="Description" HBox.hgrow="ALWAYS"/>
         <TextField fx:id="amountField" promptText="Montant"/>
         <ChoiceBox fx:id="accountChoice" prefWidth="120"/>
+        <ChoiceBox fx:id="eventChoice" prefWidth="120"/>
         <Button fx:id="addBtn" text="Ajouter"/>
     </HBox>
 </VBox>

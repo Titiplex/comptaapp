@@ -10,13 +10,15 @@ public class Transaction {
     private final StringProperty description = new SimpleStringProperty();
     private final DoubleProperty amount = new SimpleDoubleProperty();
     private final IntegerProperty accountId = new SimpleIntegerProperty();
+    private final IntegerProperty eventId = new SimpleIntegerProperty();
 
-    public Transaction(int id, LocalDate d, String desc, double amt, int acc) {
+    public Transaction(int id, LocalDate d, String desc, double amt, int acc, int ev) {
         this.id.set(id);
         this.date.set(d);
         this.description.set(desc);
         this.amount.set(amt);
         this.accountId.set(acc);
+        this.eventId.set(ev);
     }
 
     public LocalDate getDate() {
@@ -33,6 +35,10 @@ public class Transaction {
 
     public int getAccountId() {
         return accountId.get();
+    }
+
+    public int getEventId() {
+        return eventId.get();
     }
 
     public ObjectProperty<LocalDate> dateProperty() {

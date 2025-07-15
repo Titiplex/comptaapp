@@ -9,6 +9,7 @@
             <Button text="Dashboard" onAction="#showDashboard" maxWidth="Infinity"/>
             <Button text="Comptes" onAction="#showAccounts" maxWidth="Infinity"/>
             <Button text="Écritures" onAction="#showTransactions" maxWidth="Infinity"/>
+            <Button text="Évènements" onAction="#showEvents" maxWidth="Infinity"/>
             <Button text="Rapports" onAction="#showReports" maxWidth="Infinity"/>
         </VBox>
    </left>

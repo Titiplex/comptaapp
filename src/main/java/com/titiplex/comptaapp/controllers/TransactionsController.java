@@ -3,7 +3,9 @@ package com.titiplex.comptaapp.controllers;
 import com.titiplex.comptaapp.DataStore;
 import com.titiplex.comptaapp.dao.TransactionDao;
 import com.titiplex.comptaapp.models.Account;
+import com.titiplex.comptaapp.models.Event;
 import com.titiplex.comptaapp.models.Transaction;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,11 +23,15 @@ public class TransactionsController {
     @FXML
     private TableColumn<Transaction, Number> amtCol;
     @FXML
+    private TableColumn<Transaction, String> eventCol;
+    @FXML
     private DatePicker dateField;
     @FXML
     private TextField descField, amountField;
     @FXML
     private ChoiceBox<Account> accountChoice;
+    @FXML
+    private ChoiceBox<Event> eventChoice;
     @FXML
     private Button addBtn;
 
@@ -34,6 +40,14 @@ public class TransactionsController {
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         amtCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        eventCol.setCellValueFactory(cell -> {
+            int eid = cell.getValue().getEventId();
+            Event ev = DataStore.events.stream()
+                    .filter(e -> e.getId() == eid)
+                    .findFirst()
+                    .orElse(null);
+            return new ReadOnlyStringWrapper(ev == null ? "" : ev.getName());
+        });
         transactionsTable.setItems(DataStore.transactions);
         accountChoice.setItems(DataStore.accounts);
         accountChoice.setConverter(new StringConverter<>() {
@@ -46,7 +60,17 @@ public class TransactionsController {
             }
         });
         dateField.setValue(LocalDate.now());
-        addBtn.setOnAction(e -> add());
+        eventChoice.setItems(DataStore.events);
+        eventChoice.setConverter(new StringConverter<>() {
+            public String toString(Event e) {
+                return e == null ? "" : e.getName();
+            }
+
+            public Event fromString(String s) {
+                return null;
+            }
+        });
+        addBtn.setOnAction(_ -> add());
     }
 
     private void add() {
@@ -67,7 +91,12 @@ public class TransactionsController {
             error("Montant invalide");
             return;
         }
-        TransactionDao.create(dateField.getValue(), desc, amt, acc.getId());
+        Event ev = eventChoice.getValue();
+        if (ev == null) {
+            error("Null event");
+            return;
+        }
+        TransactionDao.create(dateField.getValue(), desc, amt, acc.getId(), ev.getId());
         descField.clear();
         amountField.clear();
     }

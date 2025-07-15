@@ -4,21 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="Add IntelliJ IDEA data source configuration for SQLite database">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="Quicker database interactions.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/EventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/EventDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/event-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3b7d6982-378c-4d89-8d3b-d31e0532480f.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3b7d6982-378c-4d89-8d3b-d31e0532480f/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compta.db" beforeDir="false" afterPath="$PROJECT_DIR$/compta.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DBHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DataStore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/AccountsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/ReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/ReportsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/TransactionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/AccountDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/TransactionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/transactions-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/transactions-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +68,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -79,25 +84,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.ComptaApp [run].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\Titiplex\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.1\\plugins\\Shell Script\\shellcheck.exe&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.ComptaApp [run].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\Titiplex\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.1\\plugins\\Shell Script\\shellcheck.exe",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDK Location",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "settings.sync"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "SQLite"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="ComptaApp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -149,7 +162,9 @@
       <workItem from="1749545423623" duration="1225000" />
       <workItem from="1752337754539" duration="6391000" />
       <workItem from="1752432849542" duration="124000" />
-      <workItem from="1752435689762" duration="1938000" />
+      <workItem from="1752435689762" duration="6498000" />
+      <workItem from="1752600258607" duration="2342000" />
+      <workItem from="1752602670506" duration="294000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -175,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752432918497</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Quicker database interactions.">
+      <option name="closed" value="true" />
+      <created>1752443641416</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1752443641416</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +231,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="Replace &quot;Hello&quot; view with a complete multi-view JavaFX application, including navigation, dashboard, accounts, transactions, and reports views. Add models, controllers, and styling updates." />
     <MESSAGE value="Add IntelliJ IDEA data source configuration for SQLite database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add IntelliJ IDEA data source configuration for SQLite database" />
+    <MESSAGE value="Quicker database interactions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Quicker database interactions." />
   </component>
 </project>

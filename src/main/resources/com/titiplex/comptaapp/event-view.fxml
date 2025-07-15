@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.titiplex.comptaapp.controllers.EventController"
+      spacing="10" style="-fx-padding:20">
+
+    <TableView fx:id="eventTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="nameCol" text="Évènement"/>
+            <TableColumn fx:id="descCol" text="Description"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <TextField fx:id="nameField" promptText="Nom"/>
+        <TextField fx:id="descField" promptText="Description" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="addBtn" text="Ajouter"/>
+    </HBox>
+</VBox>

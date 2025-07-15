@@ -39,4 +39,9 @@ public class NavigationController {
     private void load(String fxml) throws IOException {
         rootLayout.setCenter(FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxml))));
     }
+
+    @FXML
+    private void showEvents() throws IOException {
+        load("event-view.fxml");
+    }
 }
