@@ -21,7 +21,7 @@ public class WebApp extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(WebApp.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles.css")).toExternalForm());
-        stage.setTitle("Compta App...");
+        stage.setTitle("ComptaApp - Comptabilité simple");
         stage.setScene(scene);
         stage.show();
     }

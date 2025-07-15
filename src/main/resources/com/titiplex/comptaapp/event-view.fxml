@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.titiplex.comptaapp.controllers.EventController"
-      spacing="10" style="-fx-padding:20">
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.titiplex.comptaapp.controllers.EventController"
+            style="-fx-padding:20">
 
-    <TableView fx:id="eventTable" VBox.vgrow="ALWAYS">
-        <columns>
-            <TableColumn fx:id="nameCol" text="Évènement"/>
-            <TableColumn fx:id="descCol" text="Description"/>
-        </columns>
-    </TableView>
+    <!-- COLONNE GAUCHE : liste + ajout -->
+    <left>
+        <VBox spacing="10" style="-fx-padding: 7">
+            <ListView fx:id="eventList" prefWidth="200" VBox.vgrow="ALWAYS"/>
 
-    <HBox spacing="10">
-        <TextField fx:id="nameField" promptText="Nom"/>
-        <TextField fx:id="descField" promptText="Description" HBox.hgrow="ALWAYS"/>
-        <Button fx:id="addBtn" text="Ajouter"/>
-    </HBox>
-</VBox>
+            <HBox spacing="5">
+                <TextField fx:id="nameField" promptText="Nom" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="addBtn" text="+" minWidth="30"/>
+            </HBox>
+            <TextField fx:id="descField" promptText="Description"/>
+        </VBox>
+    </left>
+
+    <!-- Panneau centre : résumé + transactions -->
+    <center>
+        <VBox spacing="15" style="-fx-padding: 7">
+
+            <GridPane hgap="10" vgap="6">
+                <Label text="Recettes :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="revLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Dépenses :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="expLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Solde :" style="-fx-font-weight:bold"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="balLabel" style="-fx-font-weight:bold"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <TableView fx:id="txTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="dateCol" text="Date" prefWidth="100"/>
+                    <TableColumn fx:id="descCol" text="Description" prefWidth="240"/>
+                    <TableColumn fx:id="accCol" text="Compte" prefWidth="140"/>
+                    <TableColumn fx:id="amtCol" text="Montant (€)" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
