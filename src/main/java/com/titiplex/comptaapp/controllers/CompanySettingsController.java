@@ -43,21 +43,27 @@ public class CompanySettingsController {
     }
 
     private void save() {
-        DataStore.saveMeta("companyName", nameField.getText().trim());
-        DataStore.saveMeta("country", countryField.getText().trim());
-        DataStore.saveMeta("address", addrField.getText().trim());
+        String n = nameField.getText().trim();
+        String c = countryField.getText().trim();
+        String a = addrField.getText().trim();
+
+        DataStore.saveMeta("companyName", n);
+        DataStore.saveMeta("country", c);
+        DataStore.saveMeta("address", a);
+
+        // met à jour immédiatement les labels lecture seule
+        curName.setText(n);
+        curCountry.setText(c);
+        curAddr.setText(a);
 
         statusLabel.setText("Enregistré !");
-        // met à jour les labels lecture seule après commit (petit délai thread DB)
-        Platform.runLater(() -> {
-            refreshDisplay();
-            new Thread(() -> {          // efface le statut après 2 s
-                try {
-                    Thread.sleep(2000);
-                } catch (Exception ignored) {
-                }
-                Platform.runLater(() -> statusLabel.setText(""));
-            }).start();
-        });
+        new Thread(() -> {                // efface après 2 s
+            try {
+                Thread.sleep(2000);
+            } catch (Exception ignored) {
+            }
+            Platform.runLater(() -> statusLabel.setText(""));
+        }).start();
     }
+
 }
