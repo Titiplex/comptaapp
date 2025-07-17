@@ -13,7 +13,7 @@ public class ReportsController {
     @FXML
     private void initialize() {
         rebuild();
-        DataStore.transactions.addListener((ListChangeListener<Transaction>) c -> rebuild());
+        DataStore.transactions.addListener((ListChangeListener<Transaction>) _ -> rebuild());
     }
 
     private void rebuild() {

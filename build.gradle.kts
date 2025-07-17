@@ -57,6 +57,8 @@ dependencies {
     implementation("com.h2database:h2:2.3.232")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    implementation("com.github.librepdf:openpdf:1.3.32")
 }
 
 tasks.withType<Test> {

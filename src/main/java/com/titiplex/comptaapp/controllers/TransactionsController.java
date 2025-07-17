@@ -5,6 +5,7 @@ import com.titiplex.comptaapp.dao.TransactionDao;
 import com.titiplex.comptaapp.models.Account;
 import com.titiplex.comptaapp.models.Event;
 import com.titiplex.comptaapp.models.Transaction;
+import com.titiplex.comptaapp.util.AlertUtil;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -13,7 +14,7 @@ import javafx.util.StringConverter;
 
 import java.time.LocalDate;
 
-public class TransactionsController {
+public class TransactionsController implements com.titiplex.comptaapp.util.AlertUtil {
     @FXML
     private TableView<Transaction> transactionsTable;
     @FXML
@@ -76,24 +77,24 @@ public class TransactionsController {
     private void add() {
         Account acc = accountChoice.getValue();
         if (acc == null) {
-            error("Choisissez un compte");
+            AlertUtil.error("Choisissez un compte");
             return;
         }
         String desc = descField.getText();
         if (desc.isBlank()) {
-            error("Description vide");
+            AlertUtil.error("Description vide");
             return;
         }
         double amt;
         try {
             amt = Double.parseDouble(amountField.getText().replace(',', '.'));
         } catch (NumberFormatException ex) {
-            error("Montant invalide");
+            AlertUtil.error("Montant invalide");
             return;
         }
         Event ev = eventChoice.getValue();
         if (ev == null) {
-            error("Null event");
+            AlertUtil.error("Null event");
             return;
         }
         TransactionDao.create(dateField.getValue(), desc, amt, acc.getId(), ev.getId());
@@ -101,7 +102,4 @@ public class TransactionsController {
         amountField.clear();
     }
 
-    private void error(String m) {
-        new Alert(Alert.AlertType.ERROR, m).showAndWait();
-    }
 }

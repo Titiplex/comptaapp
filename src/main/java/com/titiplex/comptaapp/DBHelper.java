@@ -15,6 +15,12 @@ public final class DBHelper {
         try {
             CONN = DriverManager.getConnection(URL, "sa", "");
             try (Statement st = CONN.createStatement()) {
+                st.executeUpdate("""
+                            CREATE TABLE IF NOT EXISTS metadata(
+                                meta_key   VARCHAR PRIMARY KEY,
+                                meta_value VARCHAR
+                            )
+                        """);
                 st.executeUpdate("CREATE TABLE IF NOT EXISTS event(id IDENTITY PRIMARY KEY,name VARCHAR NOT NULL UNIQUE,description VARCHAR)");
                 st.executeUpdate("CREATE TABLE IF NOT EXISTS account(id IDENTITY PRIMARY KEY,name VARCHAR UNIQUE NOT NULL,balance DOUBLE DEFAULT 0)");
                 st.executeUpdate("CREATE TABLE IF NOT EXISTS transaction(id IDENTITY PRIMARY KEY,date DATE NOT NULL,description VARCHAR,amount DOUBLE NOT NULL,account_id BIGINT NOT NULL,event_id BIGINT,FOREIGN KEY(account_id) REFERENCES account(id),FOREIGN KEY(event_id) references event(id))");

@@ -5,11 +5,17 @@ import com.titiplex.comptaapp.dao.EventDao;
 import com.titiplex.comptaapp.models.Account;
 import com.titiplex.comptaapp.models.Event;
 import com.titiplex.comptaapp.models.Transaction;
+import com.titiplex.comptaapp.util.PDFUtil;
+import com.titiplex.comptaapp.util.Period;
+import com.titiplex.comptaapp.util.PeriodDialog;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 
 public class EventController {
 
@@ -20,6 +26,8 @@ public class EventController {
     private TextField nameField, descField;
     @FXML
     private Button addBtn;
+    @FXML
+    private Button pdfBtn;
 
     // CENTRE
     @FXML
@@ -38,7 +46,7 @@ public class EventController {
 
         // liste d'évènements
         eventList.setItems(DataStore.events);
-        eventList.setCellFactory(lv -> new ListCell<>() {
+        eventList.setCellFactory(_ -> new ListCell<>() {
             @Override
             protected void updateItem(Event ev, boolean empty) {
                 super.updateItem(ev, empty);
@@ -46,7 +54,7 @@ public class EventController {
             }
         });
         eventList.getSelectionModel().selectedItemProperty()
-                .addListener((obs, o, n) -> refreshSummary(n));
+                .addListener((_, _, n) -> refreshSummary(n));
 
         // table des transactions
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -61,7 +69,7 @@ public class EventController {
         });
 
         // bouton ajouter
-        addBtn.setOnAction(e -> {
+        addBtn.setOnAction(_ -> {
             String n = nameField.getText().trim();
             if (n.isBlank()) return;
             EventDao.create(n, descField.getText().trim());
@@ -72,6 +80,8 @@ public class EventController {
         // auto-sélection premier évènement s'il existe
         if (!DataStore.events.isEmpty())
             eventList.getSelectionModel().selectFirst();
+
+        pdfBtn.setOnAction(_ -> exportPDF());
     }
 
     private void refreshSummary(Event ev) {
@@ -84,17 +94,44 @@ public class EventController {
         var filtered = DataStore.transactions
                 .filtered(t -> t.getEventId() == ev.getId());
 
-        txTable.setItems(filtered);
+        AccountsController.setItemsList(filtered, txTable, revLabel, expLabel, balLabel);
+    }
 
-        double rev = filtered.stream()
-                .filter(t -> t.getAmount() > 0)
-                .mapToDouble(Transaction::getAmount).sum();
-        double exp = filtered.stream()
-                .filter(t -> t.getAmount() < 0)
-                .mapToDouble(t -> -t.getAmount()).sum();
+    private void exportPDF() {
+        Event ev = eventList.getSelectionModel().getSelectedItem();
+        if (ev == null) return;
 
-        revLabel.setText(String.format("%.2f", rev));
-        expLabel.setText(String.format("%.2f", exp));
-        balLabel.setText(String.format("%.2f", rev - exp));
+        PeriodDialog.ask(eventList.getScene().getWindow()).ifPresent(
+                period -> doExport(ev, period)
+        );
+    }
+
+    private void doExport(Event ev, Period period) {
+        var list = DataStore.transactions.stream()
+                .filter(t -> t.getEventId() == ev.getId())
+                .filter(t -> PeriodDialog.inPeriod(t.getDate(), period))
+                .toList();
+
+        FileChooser fc = new FileChooser();
+        fc.setInitialFileName("Releve_" + ev.getName() + ".pdf");
+        FileChooser.ExtensionFilter pdf = new FileChooser.ExtensionFilter("PDF (*.pdf)", "*.pdf");
+        fc.getExtensionFilters().add(pdf);
+        fc.setSelectedExtensionFilter(pdf);
+
+        File f = fc.showSaveDialog(eventList.getScene().getWindow());
+        if (f == null) return;
+
+        if (!f.getName().toLowerCase().endsWith(".pdf")) {
+            f = new File(f.getParentFile(), f.getName() + ".pdf");
+        }
+        // Ajoute .pdf si l’utilisateur l’a omis
+        try {
+            PDFUtil.exportTransactions(f,
+                    "Évènement : " + ev.getName(), list);
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+            new Alert(Alert.AlertType.ERROR, "Erreur export PDF : " + ex.getMessage()).showAndWait();
+        }
+
     }
 }

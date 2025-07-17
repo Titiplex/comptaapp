@@ -11,6 +11,8 @@
             <Button text="Écritures" onAction="#showTransactions" maxWidth="Infinity"/>
             <Button text="Évènements" onAction="#showEvents" maxWidth="Infinity"/>
             <Button text="Rapports" onAction="#showReports" maxWidth="Infinity"/>
+            <Button text="Relevé entreprise" onAction="#exportCompany" maxWidth="Infinity"/>
+            <Button text="Paramètres société" onAction="#showCompanySettings" maxWidth="Infinity"/>
         </VBox>
    </left>
 </BorderPane>

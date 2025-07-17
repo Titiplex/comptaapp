@@ -1,18 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.BorderPane?>
+
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.titiplex.comptaapp.controllers.AccountsController"
             style="-fx-padding:20">
+
+    <!-- TABLE DES COMPTES -->
     <center>
-        <TableView fx:id="accountsTable" prefHeight="400" prefWidth="600">
+        <TableView fx:id="accountsTable" prefWidth="350" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="nameCol" text="Compte"/>
-                <TableColumn fx:id="balanceCol" text="Solde (€)"/>
+                <TableColumn fx:id="nameCol" text="Compte" prefWidth="200"/>
+                <TableColumn fx:id="balanceCol" text="Solde (€)" prefWidth="120"/>
             </columns>
         </TableView>
     </center>
+
+    <!-- Panneau latéral : résumé + transactions -->
+    <right>
+        <VBox spacing="12" prefWidth="550" style="-fx-padding:10">
+
+            <Label text="Résumé du compte"
+                   style="-fx-font-size:16px;-fx-font-weight:bold"/>
+
+            <GridPane hgap="10" vgap="6">
+                <Label text="Recettes :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="revLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Dépenses :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="expLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Solde :" style="-fx-font-weight:bold"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="balLabel" style="-fx-font-weight:bold"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Button fx:id="pdfBtn" text="Exporter PDF" maxWidth="150"/>
+
+            <Label text="Transactions"
+                   style="-fx-font-size:14px;-fx-font-weight:bold"/>
+
+            <TableView fx:id="txTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="dateCol" text="Date" prefWidth="90"/>
+                    <TableColumn fx:id="descCol" text="Description" prefWidth="260"/>
+                    <TableColumn fx:id="amtCol" text="Montant (€)" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </right>
+
+    <!-- Boutons bas -->
     <bottom>
         <HBox spacing="10" BorderPane.alignment="CENTER_RIGHT">
             <Button fx:id="addAccountBtn" text="Ajouter"/>

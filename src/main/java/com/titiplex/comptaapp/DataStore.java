@@ -47,11 +47,13 @@ public final class DataStore {
     }
 
     public static void loadMetaSync() {
-        if(!meta.isEmpty()) return;                       // déjà chargé
+        if (!meta.isEmpty()) return;                       // déjà chargé
         try (var st = DBHelper.getConn().createStatement();
              var rs = st.executeQuery("SELECT meta_key,meta_value FROM metadata")) {
             while (rs.next()) meta.put(rs.getString(1), rs.getString(2));
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 
