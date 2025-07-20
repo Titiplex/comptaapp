@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="Prise en charge de la génération de pdf pour des bilans ou relevés de compte.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/ExportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="Ajout d'une bar de menu supérieure de l'application, avec menus déroulants.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/CompanySettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/CompanySettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/company-settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/company-settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/dashboard-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/WebApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/WebApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +179,7 @@
       <workItem from="1752435689762" duration="6498000" />
       <workItem from="1752600258607" duration="2342000" />
       <workItem from="1752602670506" duration="17025000" />
-      <workItem from="1753020641138" duration="7062000" />
+      <workItem from="1753020641138" duration="7631000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -284,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753021495149</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Ajout d'une bar de menu supérieure de l'application, avec menus déroulants.">
+      <option name="closed" value="true" />
+      <created>1753027935215</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1753027935215</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +346,7 @@
     <MESSAGE value="Ajout des metadonnées d'entreprise." />
     <MESSAGE value="Nom d'entreprise en nom d'application." />
     <MESSAGE value="Prise en charge de la génération de pdf pour des bilans ou relevés de compte." />
-    <option name="LAST_COMMIT_MESSAGE" value="Prise en charge de la génération de pdf pour des bilans ou relevés de compte." />
+    <MESSAGE value="Ajout d'une bar de menu supérieure de l'application, avec menus déroulants." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'une bar de menu supérieure de l'application, avec menus déroulants." />
   </component>
 </project>
