@@ -1,29 +1,53 @@
 package com.titiplex.comptaapp;
 
-import com.titiplex.comptaapp.util.PDFUtil;
-import com.titiplex.comptaapp.util.Period;
-import com.titiplex.comptaapp.util.PeriodDialog;
+import com.titiplex.comptaapp.controllers.CompanySettingsController;
+import com.titiplex.comptaapp.controllers.ExportController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
 public class NavigationController {
     @FXML
     private BorderPane rootLayout;
+    @FXML
+    private MenuBar menuBar;
 
     @FXML
     private void initialize() throws IOException {
         showDashboard();
+        buildMenus();
     }
 
     @FXML
     private void showDashboard() throws IOException {
         load("dashboard-view.fxml");
+    }
+
+    private void buildMenus() {
+        // Exportations pdf et autres
+        MenuItem releve = new MenuItem("Relevés d'entreprise");
+        releve.setOnAction(_ -> ExportController.exportBalance(rootLayout.getScene().getWindow()));
+        MenuItem bilan = new MenuItem("Bilan Financier");
+        bilan.setOnAction(_ -> ExportController.exportCompany(rootLayout.getScene().getWindow()));
+
+        Menu m1 = new Menu("Exporter");
+        m1.getItems().addAll(releve, bilan);
+
+        // Paramètres
+        MenuItem entreprise = new MenuItem("Paramètres d'entreprise");
+        entreprise.setOnAction(_ -> showCompanySettings());
+
+        Menu m2 = new Menu("Paramètres");
+        m2.getItems().addAll(entreprise);
+
+        // MenuBar
+        menuBar.getMenus().addAll(m1, m2);
     }
 
     @FXML
@@ -50,43 +74,39 @@ public class NavigationController {
         load("event-view.fxml");
     }
 
-    @FXML
-    private void showCompanySettings() throws IOException {
-        load("company-settings.fxml");
-    }
-
-    @FXML
-    private void exportCompany() {
-        PeriodDialog.ask(rootLayout.getScene().getWindow()).ifPresent(
-                this::doExport
-        );
-    }
-
-    private void doExport(Period period) {
-        var list = DataStore.transactions.stream()
-                .filter(t -> PeriodDialog.inPeriod(t.getDate(), period))
-                .toList();
-
-        FileChooser fc = new FileChooser();
-        fc.setInitialFileName("Releve_entreprise" + ".pdf");
-        FileChooser.ExtensionFilter pdf = new FileChooser.ExtensionFilter("PDF (*.pdf)", "*.pdf");
-        fc.getExtensionFilters().add(pdf);
-        fc.setSelectedExtensionFilter(pdf);
-
-        File f = fc.showSaveDialog(rootLayout.getScene().getWindow());
-        if (f == null) return;
-
-        // Ajoute .pdf si l’utilisateur l’a omis
-        if (!f.getName().toLowerCase().endsWith(".pdf")) {
-            f = new File(f.getParentFile(), f.getName() + ".pdf");
-        }
+    private void showCompanySettings() {
         try {
-            PDFUtil.exportTransactions(f,
-                    "Relevé entreprise", list);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("company-settings.fxml"));
+            DialogPane pane = loader.load();
+            CompanySettingsController controller = loader.getController();
+
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(pane);
+            ((Stage) dialog.getDialogPane().getScene().getWindow()).setResizable(true);
+            dialog.initOwner(rootLayout.getScene().getWindow());
+            dialog.initModality(Modality.WINDOW_MODAL);
+            dialog.setTitle("Paramètres société");
+
+            // Optionnel : icône
+            // ((Stage) dialog.getDialogPane().getScene().getWindow()).getIcons().add(new Image(...));
+
+            dialog.setResultConverter(bt -> {
+                if (bt != null && bt.getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+                    controller.applyIfValidOnOk();            // fait le save
+                }
+                return bt;
+            });
+
+            dialog.showAndWait();
+
+            if (controller.isDirty()) {
+                // rafraîchir le titre principal de l’application par exemple
+                Stage stage = (Stage) rootLayout.getScene().getWindow();
+                String company = DataStore.meta("companyName", "");
+                stage.setTitle(company.isBlank() ? "Compta App" : "Compta App – " + company);
+            }
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
-
     }
-
 }

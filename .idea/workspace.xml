@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="Prise en charge de la génération de pdf pour des bilans ou relevés de compte.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/ExportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/CompanySettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/CompanySettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/company-settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/company-settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/dashboard-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,14 +61,32 @@
       <list>
         <option value="FxmlFile" />
         <option value="Record" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Titiplex"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Titiplex/comptaapp.git",
+    "accountId": "199a14f5-5078-4bc9-83b8-206effae6ebb"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -160,7 +186,7 @@
       <workItem from="1752435689762" duration="6498000" />
       <workItem from="1752600258607" duration="2342000" />
       <workItem from="1752602670506" duration="17025000" />
-      <workItem from="1753020641138" duration="353000" />
+      <workItem from="1753020641138" duration="7062000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -250,13 +276,36 @@
       <option name="project" value="LOCAL" />
       <updated>1752792668797</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Prise en charge de la génération de pdf pour des bilans ou relevés de compte.">
+      <option name="closed" value="true" />
+      <created>1753021495149</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1753021495149</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -268,6 +317,13 @@
                     <value>
                       <list>
                         <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
                       </list>
                     </value>
                   </entry>
