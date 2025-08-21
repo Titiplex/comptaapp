@@ -22,6 +22,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
 public final class PDFUtil {
@@ -116,6 +117,7 @@ public final class PDFUtil {
         // Filtré sur la période
         Map<Event, double[]> map = new LinkedHashMap<>();      // [recettes, dépenses]
 
+        AtomicReference<Double> du = new AtomicReference<>(0.0);
         tx.stream()
                 .filter(t -> PeriodDialog.inPeriod(t.getDate(), period))
                 .forEach(t -> {
@@ -126,8 +128,8 @@ public final class PDFUtil {
                     if (t.getAmount() > 0) map.get(ev)[0] += t.getAmount();
                     else //noinspection UnnecessaryUnaryMinus
                         map.get(ev)[1] += -t.getAmount();
+                    if (t.getStatus().equals("PLANNED")) du.updateAndGet(v -> v + t.getAmount());
                 });
-
         double totRecettes = map.values().stream().mapToDouble(a -> a[0]).sum();
         double totDepenses = map.values().stream().mapToDouble(a -> a[1]).sum();
         double variation = totRecettes - totDepenses;
@@ -180,6 +182,10 @@ public final class PDFUtil {
         fin.setBackgroundColor(Color.LIGHT_GRAY);
         sol.addCell(fin);
         sol.addCell(money(soldeFinal));
+       if (du.get() != 0) {
+           sol.addCell(cell("Dont Créances et Dûs"));
+           sol.addCell(money(du.get()));
+       }
         doc.add(sol);
 
         doc.close();
