@@ -70,4 +70,8 @@ public final class DataStore {
                 transactions.stream().filter(t -> t.getAccountId() == a.getId()).mapToDouble(Transaction::getAmount).sum()
         ));
     }
+
+    public static final ObservableList<Transaction> planned =
+            transactions.filtered(t -> "PLANNED".equals(t.getStatus()));
+
 }

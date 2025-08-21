@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.titiplex.comptaapp.controllers.TransactionsController"
       style="-fx-padding:20">
@@ -19,6 +19,8 @@
         <TextField fx:id="amountField" promptText="Montant"/>
         <ChoiceBox fx:id="accountChoice" prefWidth="120"/>
         <ChoiceBox fx:id="eventChoice" prefWidth="120"/>
+        <ToggleButton fx:id="plannedToggle" text="Planifié"/>
+        <DatePicker fx:id="dueField" promptText="Échéance"/>
         <Button fx:id="addBtn" text="Ajouter"/>
     </HBox>
 </VBox>

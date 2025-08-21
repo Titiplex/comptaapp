@@ -11,6 +11,7 @@ public class Transaction {
     private final DoubleProperty amount = new SimpleDoubleProperty();
     private final IntegerProperty accountId = new SimpleIntegerProperty();
     private final IntegerProperty eventId = new SimpleIntegerProperty();
+    private final StringProperty status = new SimpleStringProperty();
 
     public Transaction(int id, LocalDate d, String desc, double amt, int acc, int ev) {
         this.id.set(id);
@@ -19,6 +20,10 @@ public class Transaction {
         this.amount.set(amt);
         this.accountId.set(acc);
         this.eventId.set(ev);
+    }
+
+    public int getId() {
+        return id.get();
     }
 
     public LocalDate getDate() {
@@ -51,5 +56,9 @@ public class Transaction {
 
     public DoubleProperty amountProperty() {
         return amount;
+    }
+
+    public String getStatus() {
+        return status.get();
     }
 }

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<BorderPane fx:id="rootLayout" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.titiplex.comptaapp.NavigationController">
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane fx:id="rootLayout" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+            fx:controller="com.titiplex.comptaapp.NavigationController">
     <top>
         <MenuBar fx:id="menuBar"/>
     </top>
     <left>
         <VBox spacing="10" style="-fx-padding:15">
-            <Button maxWidth="Infinity" onAction="#showDashboard" text="Dashboard" />
-            <Button maxWidth="Infinity" onAction="#showAccounts" text="Comptes" />
-            <Button maxWidth="Infinity" onAction="#showTransactions" text="Écritures" />
-            <Button maxWidth="Infinity" onAction="#showEvents" text="Évènements" />
-            <Button maxWidth="Infinity" onAction="#showReports" text="Rapports" />
+            <Button maxWidth="Infinity" onAction="#showDashboard" text="Dashboard"/>
+            <Button maxWidth="Infinity" onAction="#showAccounts" text="Comptes"/>
+            <Button maxWidth="Infinity" onAction="#showTransactions" text="Transactions"/>
+            <Button maxWidth="Infinity" onAction="#showForecast" text="Prévisions"/>
+            <Button maxWidth="Infinity" onAction="#showEvents" text="Évènements"/>
+            <Button maxWidth="Infinity" onAction="#showReports" text="Rapports"/>
         </VBox>
     </left>
 </BorderPane>

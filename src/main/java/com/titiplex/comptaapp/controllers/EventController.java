@@ -8,7 +8,6 @@ import com.titiplex.comptaapp.models.Transaction;
 import com.titiplex.comptaapp.util.PDFUtil;
 import com.titiplex.comptaapp.util.Period;
 import com.titiplex.comptaapp.util.PeriodDialog;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -60,13 +59,7 @@ public class EventController {
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         amtCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        accCol.setCellValueFactory(cell -> {
-            int aid = cell.getValue().getAccountId();
-            Account a = DataStore.accounts.stream()
-                    .filter(ac -> ac.getId() == aid)
-                    .findFirst().orElse(null);
-            return Bindings.createStringBinding(() -> a == null ? "" : a.getName());
-        });
+        Account.getAccount(accCol);
 
         // bouton ajouter
         addBtn.setOnAction(_ -> {

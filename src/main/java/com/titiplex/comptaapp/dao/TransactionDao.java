@@ -57,4 +57,43 @@ public final class TransactionDao {
             }
         });
     }
+
+    public static void createPlanned(LocalDate date, LocalDate due,
+                                     String desc, double amount,
+                                     int accId, Integer eventId) {
+        DBHelper.EXEC.execute(() -> {
+            try (PreparedStatement ps = DBHelper.getConn().prepareStatement(
+                    "INSERT INTO transaction(date,due_date,description,amount,status,account_id,event_id) " +
+                            "VALUES(?,?,?,?,?,?,?)")) {
+                ps.setDate(1, Date.valueOf(date));
+                ps.setDate(2, due == null ? null : Date.valueOf(due));
+                ps.setString(3, desc);
+                ps.setDouble(4, amount);
+                ps.setString(5, "PLANNED");
+                ps.setString(6, amount > 0 ? "INCOME" : "EXPENSE");
+                ps.setInt(7, accId);
+                if (eventId == null) ps.setNull(8, Types.BIGINT);
+                else ps.setInt(8, eventId);
+                ps.executeUpdate();
+                DBHelper.commit();
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        });
+    }
+
+    public static void markSettled(int txId, LocalDate realDate) {
+        DBHelper.EXEC.execute(() -> {
+            try (var ps = DBHelper.getConn().prepareStatement(
+                    "UPDATE transaction SET status='REALIZED', settled=TRUE, date=? WHERE id=?")) {
+                ps.setDate(1, Date.valueOf(realDate));
+                ps.setInt(2, txId);
+                ps.executeUpdate();
+                DBHelper.commit();
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        });
+    }
+
 }

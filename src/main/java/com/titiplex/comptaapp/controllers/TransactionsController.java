@@ -14,7 +14,7 @@ import javafx.util.StringConverter;
 
 import java.time.LocalDate;
 
-public class TransactionsController implements com.titiplex.comptaapp.util.AlertUtil {
+public class TransactionsController implements AlertUtil {
     @FXML
     private TableView<Transaction> transactionsTable;
     @FXML
@@ -33,6 +33,10 @@ public class TransactionsController implements com.titiplex.comptaapp.util.Alert
     private ChoiceBox<Account> accountChoice;
     @FXML
     private ChoiceBox<Event> eventChoice;
+    @FXML
+    private ToggleButton plannedToggle;
+    @FXML
+    private DatePicker dueField;
     @FXML
     private Button addBtn;
 
@@ -97,7 +101,15 @@ public class TransactionsController implements com.titiplex.comptaapp.util.Alert
             AlertUtil.error("Null event");
             return;
         }
-        TransactionDao.create(dateField.getValue(), desc, amt, acc.getId(), ev.getId());
+        boolean isPlanned = plannedToggle.isSelected();
+        if (isPlanned) {
+            TransactionDao.createPlanned(dateField.getValue(),
+                    dueField.getValue(),
+                    desc, amt, acc.getId(),
+                    ev.getId());
+        } else {
+            TransactionDao.create(dateField.getValue(), desc, amt, acc.getId(), ev.getId());
+        }
         descField.clear();
         amountField.clear();
     }

@@ -30,14 +30,60 @@ public class NavigationController {
     }
 
     private void buildMenus() {
-        // Exportations pdf et autres
+        // --- Exportations pdf ---
         MenuItem releve = new MenuItem("Relevés d'entreprise");
         releve.setOnAction(_ -> ExportController.exportBalance(rootLayout.getScene().getWindow()));
         MenuItem bilan = new MenuItem("Bilan Financier");
         bilan.setOnAction(_ -> ExportController.exportCompany(rootLayout.getScene().getWindow()));
 
+        Menu exportPdf = new Menu("PDF");
+        exportPdf.getItems().addAll(releve, bilan);
+
+        // --- Base de données ---
+        MenuItem dumpSql = new MenuItem("SQL dump (.sql)...");
+        dumpSql.setOnAction(_ -> com.titiplex.comptaapp.util.ExportDbUtil.exportSqlDump(rootLayout.getScene().getWindow()));
+
+        MenuItem csvAll = new MenuItem("CSV (toutes tables)...");
+        csvAll.setOnAction(_ -> com.titiplex.comptaapp.util.ExportDbUtil.exportCsvPerTable(rootLayout.getScene().getWindow()));
+
+        MenuItem csvFilt = new MenuItem("CSV (tables choisies)...");
+        csvFilt.setOnAction(_ -> {
+            var tables = com.titiplex.comptaapp.util.ExportDbUtil.listTables();
+            com.titiplex.comptaapp.util.TableFilterDialog
+                    .selectTables(rootLayout.getScene().getWindow(), tables)
+                    .ifPresent(sel -> com.titiplex.comptaapp.util.ExportDbUtil
+                            .exportCsvSelected(rootLayout.getScene().getWindow(), sel));
+        });
+
+        MenuItem xlsxAll = new MenuItem("Excel (toutes tables)...");
+        xlsxAll.setOnAction(_ -> com.titiplex.comptaapp.util.ExportDbUtil.exportExcel(rootLayout.getScene().getWindow()));
+
+        MenuItem xlsxFilt = new MenuItem("Excel (tables choisies)...");
+        xlsxFilt.setOnAction(_ -> {
+            var tables = com.titiplex.comptaapp.util.ExportDbUtil.listTables();
+            com.titiplex.comptaapp.util.TableFilterDialog
+                    .selectTables(rootLayout.getScene().getWindow(), tables)
+                    .ifPresent(sel -> com.titiplex.comptaapp.util.ExportDbUtil
+                            .exportExcelSelected(rootLayout.getScene().getWindow(), sel));
+        });
+
+        MenuItem zipBundle = new MenuItem("ZIP (formats au choix + filtrage)...");
+        zipBundle.setOnAction(_ -> com.titiplex.comptaapp.util.ExportDbUtil.exportZipBundle(rootLayout.getScene().getWindow()));
+
+        Menu exportDb = new Menu("Base de données");
+        exportDb.getItems().addAll(
+                dumpSql,
+                new SeparatorMenuItem(),
+                csvAll, csvFilt,
+                new SeparatorMenuItem(),
+                xlsxAll, xlsxFilt,
+                new SeparatorMenuItem(),
+                zipBundle
+        );
+
+        // --- Exportation ---
         Menu m1 = new Menu("Exporter");
-        m1.getItems().addAll(releve, bilan);
+        m1.getItems().addAll(exportPdf, new SeparatorMenuItem(), exportDb);
 
         // Paramètres
         MenuItem entreprise = new MenuItem("Paramètres d'entreprise");
@@ -72,6 +118,11 @@ public class NavigationController {
     @FXML
     private void showEvents() throws IOException {
         load("event-view.fxml");
+    }
+
+    @FXML
+    private void showForecast() throws IOException {
+        load("forecast-view.fxml");
     }
 
     private void showCompanySettings() {

@@ -10,6 +10,9 @@ module com.titiplex.comptaapp {
     requires com.h2database;
     requires com.github.librepdf.openpdf;
     requires java.desktop;
+    requires javafx.base;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens com.titiplex.comptaapp to javafx.fxml;
     opens com.titiplex.comptaapp.controllers to javafx.fxml;

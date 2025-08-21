@@ -59,6 +59,8 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
     implementation("com.github.librepdf:openpdf:1.3.32")
+
+    implementation("org.apache.poi:poi-ooxml:5.2.5")
 }
 
 tasks.withType<Test> {

@@ -1,6 +1,9 @@
 package com.titiplex.comptaapp.models;
 
+import com.titiplex.comptaapp.DataStore;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.*;
+import javafx.scene.control.TableColumn;
 
 public class Account {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -35,5 +38,15 @@ public class Account {
 
     public DoubleProperty balanceProperty() {
         return balance;
+    }
+
+    public static void getAccount(TableColumn<Transaction, String> accCol) {
+        accCol.setCellValueFactory(cell -> {
+            int aid = cell.getValue().getAccountId();
+            Account a = DataStore.accounts.stream()
+                    .filter(ac -> ac.getId() == aid)
+                    .findFirst().orElse(null);
+            return Bindings.createStringBinding(() -> a == null ? "" : a.getName());
+        });
     }
 }

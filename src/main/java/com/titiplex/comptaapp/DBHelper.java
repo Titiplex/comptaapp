@@ -23,7 +23,7 @@ public final class DBHelper {
                         """);
                 st.executeUpdate("CREATE TABLE IF NOT EXISTS event(id IDENTITY PRIMARY KEY,name VARCHAR NOT NULL UNIQUE,description VARCHAR)");
                 st.executeUpdate("CREATE TABLE IF NOT EXISTS account(id IDENTITY PRIMARY KEY,name VARCHAR UNIQUE NOT NULL,balance DOUBLE DEFAULT 0)");
-                st.executeUpdate("CREATE TABLE IF NOT EXISTS transaction(id IDENTITY PRIMARY KEY,date DATE NOT NULL,description VARCHAR,amount DOUBLE NOT NULL,account_id BIGINT NOT NULL,event_id BIGINT,FOREIGN KEY(account_id) REFERENCES account(id),FOREIGN KEY(event_id) references event(id))");
+                st.executeUpdate("CREATE TABLE IF NOT EXISTS transaction(id IDENTITY PRIMARY KEY,date DATE NOT NULL,description VARCHAR,amount DOUBLE NOT NULL,account_id BIGINT NOT NULL,event_id BIGINT,status VARCHAR,due_date DATE,settled BOOLEAN DEFAULT FALSE,FOREIGN KEY(account_id) REFERENCES account(id),FOREIGN KEY(event_id) references event(id))");
             }
             CONN.setAutoCommit(false);
         } catch (SQLException e) {
