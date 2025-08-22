@@ -4,30 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="Ajout d'une icône d'application.">
-      <change afterPath="$PROJECT_DIR$/.idea/AndroidProjectSystem.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/ForecastController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/util/ExportDbUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/util/FormatsDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/util/TableFilterDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/forecast-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8f5fb401-ffdb-405f-8c4f-28a9b7b95f4b" name="Changes" comment="Ajout des utilitaires d'exportation de la base de données (SQL, CSV, Excel, ZIP).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/DataStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/NavigationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/controllers/TransactionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/dao/TransactionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/util/PDFUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/titiplex/comptaapp/util/PDFUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/transactions-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/titiplex/comptaapp/transactions-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +96,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build ComptaApp.executor": "Run",
+    "Gradle.ComptaApp [clean jpackage].executor": "Run",
+    "Gradle.ComptaApp [jpackage].executor": "Run",
     "Gradle.ComptaApp [run].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -158,7 +139,58 @@
       <recent name="com.titiplex.comptaapp.util" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradlew jpackage" />
+      <command value="gradlew clean jpackage" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.ComptaApp [clean jpackage]">
+    <configuration name="ComptaApp [clean jpackage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+            <option value="jpackage" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ComptaApp [jpackage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jpackage" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="ComptaApp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -183,6 +215,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ComptaApp [clean jpackage]" />
+        <item itemvalue="Gradle.ComptaApp [jpackage]" />
         <item itemvalue="Gradle.ComptaApp [run]" />
       </list>
     </recent_temporary>
@@ -217,7 +251,7 @@
       <workItem from="1753758667770" duration="145000" />
       <workItem from="1753826475253" duration="31000" />
       <workItem from="1755692937751" duration="9928000" />
-      <workItem from="1755801987863" duration="1517000" />
+      <workItem from="1755801987863" duration="6074000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -331,7 +365,23 @@
       <option name="project" value="LOCAL" />
       <updated>1753028560327</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Ajout de la prise en charge de mouvements financiers prévisionnels.">
+      <option name="closed" value="true" />
+      <created>1755808794873</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1755808794873</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Ajout des utilitaires d'exportation de la base de données (SQL, CSV, Excel, ZIP).">
+      <option name="closed" value="true" />
+      <created>1755808818410</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1755808818410</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,6 +444,8 @@
     <MESSAGE value="Prise en charge de la génération de pdf pour des bilans ou relevés de compte." />
     <MESSAGE value="Ajout d'une bar de menu supérieure de l'application, avec menus déroulants." />
     <MESSAGE value="Ajout d'une icône d'application." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'une icône d'application." />
+    <MESSAGE value="Ajout de la prise en charge de mouvements financiers prévisionnels." />
+    <MESSAGE value="Ajout des utilitaires d'exportation de la base de données (SQL, CSV, Excel, ZIP)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout des utilitaires d'exportation de la base de données (SQL, CSV, Excel, ZIP)." />
   </component>
 </project>
