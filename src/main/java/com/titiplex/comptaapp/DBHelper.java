@@ -1,5 +1,9 @@
 package com.titiplex.comptaapp;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -55,8 +59,14 @@ public final class DBHelper {
     public static void shutdown() {
         EXEC.shutdown();
         try {
+            Path db = Path.of("compta.mv.db");
+            if (Files.exists(db)) {
+                Path bak = db.resolveSibling("compta.db.bak");
+                Files.copy(db, bak, StandardCopyOption.REPLACE_EXISTING);
+            }
+
             CONN.close();
-        } catch (SQLException ignore) {
+        } catch (SQLException | IOException ignore) {
         }
     }
 }

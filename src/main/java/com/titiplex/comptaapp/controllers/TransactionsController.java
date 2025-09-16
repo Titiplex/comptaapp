@@ -38,7 +38,7 @@ public class TransactionsController implements AlertUtil {
     @FXML
     private DatePicker dueField;
     @FXML
-    private Button addBtn;
+    private Button addBtn, delBtn;
 
     @FXML
     private void initialize() {
@@ -76,6 +76,16 @@ public class TransactionsController implements AlertUtil {
             }
         });
         addBtn.setOnAction(_ -> add());
+        delBtn.setOnAction(_ -> delAccount());
+    }
+
+    private void delAccount() {
+        Transaction tr = transactionsTable.getSelectionModel().getSelectedItem();
+        if (tr == null) return;
+        Alert c = new Alert(Alert.AlertType.CONFIRMATION, "Supprimer " + tr.getDescription() + " ?", ButtonType.YES, ButtonType.NO);
+        if (c.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
+            TransactionDao.deleteAsync(tr.getId(), tr);
+        }
     }
 
     private void add() {

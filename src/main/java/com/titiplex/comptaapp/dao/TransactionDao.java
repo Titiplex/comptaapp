@@ -2,6 +2,7 @@ package com.titiplex.comptaapp.dao;
 
 import com.titiplex.comptaapp.DBHelper;
 import com.titiplex.comptaapp.DataStore;
+import com.titiplex.comptaapp.models.Account;
 import com.titiplex.comptaapp.models.Transaction;
 import javafx.application.Platform;
 
@@ -96,4 +97,16 @@ public final class TransactionDao {
         });
     }
 
+    public static void deleteAsync(int id, Transaction t) {
+        DBHelper.EXEC.execute(() -> {
+            try (PreparedStatement ps = DBHelper.getConn().prepareStatement("DELETE FROM transaction WHERE id=?")) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                DBHelper.commit();
+                Platform.runLater(() -> DataStore.transactions.remove(t));
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        });
+    }
 }

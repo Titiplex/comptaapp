@@ -22,5 +22,6 @@
         <ToggleButton fx:id="plannedToggle" text="Planifié"/>
         <DatePicker fx:id="dueField" promptText="Échéance"/>
         <Button fx:id="addBtn" text="Ajouter"/>
+        <Button fx:id="delBtn" text="Supprimer" />
     </HBox>
 </VBox>

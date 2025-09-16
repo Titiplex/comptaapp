@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.titiplex"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -104,7 +104,8 @@ jlink {
             "--win-menu",                 // entrée Menu Démarrer
             "--win-menu-group", "ComptaApp",
             "--win-shortcut",             // raccourci Bureau
-            "--win-shortcut-prompt"       // propose la création de raccourcis pendant l’install
+            "--win-shortcut-prompt",      // propose la création de raccourcis pendant l’install
+            "--win-upgrade-uuid", "2bbce8f9-fabc-428e-97a2-46f0c9aa79e2"
         )
 
         // Description de l’app dans l’installeur
